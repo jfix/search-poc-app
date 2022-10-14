@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import Rating from '@material-ui/lab/Rating';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
 import "./Details.css";
 
@@ -43,10 +43,11 @@ export default function Details() {
       detailsBody = (
         <div className="card-body">
           <h5 className="card-title">{document.title}</h5>
-          <img className="image" src={document.thumbnail} alt="Book cover"></img>
-          <p className="card-text">{document.authors?.join('; ')}</p>
-          <p className="card-text">DOI: <a href={document.url} target="_blank">{document.url}</a></p>          <p className="card-text">Publication date: {document.publicationDate}</p>
-          <p className="card-text">{description}</p>
+          <img className="image2" src={document.thumbnail} alt="Book cover"></img>
+          <p className="card-text">Author: {document.authors?.join('; ')}</p>
+          <p className="card-text">Published by {document.publishers} on {dayjs(document.publicationDate).format('d MMMM YYYY')}</p>
+          <p className="card-text">DOI: <a href={document.url} rel="noreferrer" target="_blank">{document.url}</a></p>
+          <p className="card-text">Abstract: {description}</p>
           <p className="card-text">Subjects: {subjects.join(', ')}</p>
           
         </div>

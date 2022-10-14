@@ -1,9 +1,11 @@
 .main--details {
     padding-top: 2em;
-};
+}
 
-.image {
-    width: 10em;
+.image2 {
+    width: 340px;
     height: auto;
-    border: 1px solid black;
+    box-shadow: 1em 1em 1em #acacac;
+    border: 1px solid #333333;
+    margin-bottom: 3em;
 }
