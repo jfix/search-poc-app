@@ -5,4 +5,5 @@
 .image {
     width: 10em;
     height: auto;
+    border: 1px solid black;
 }

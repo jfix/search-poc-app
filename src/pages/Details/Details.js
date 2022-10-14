@@ -37,15 +37,18 @@ export default function Details() {
   if (!isLoading && document) {
     // View result
     if (selectedTab === 0) {
+      const description = document.description?.en
+      const subjects = document.subjects_en
       resultStyle += " active";
       detailsBody = (
         <div className="card-body">
-          <h5 className="card-title">{document.original_title}</h5>
-          <img className="image" src={document.image_url} alt="Book cover"></img>
-          <p className="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
-          <p className="card-text">ISBN {document.isbn}</p>
-          <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
-          <p className="card-text">{document.ratings_count} Ratings</p>
+          <h5 className="card-title">{document.title}</h5>
+          <img className="image" src={document.thumbnail} alt="Book cover"></img>
+          <p className="card-text">{document.authors?.join('; ')}</p>
+          <p className="card-text">DOI: <a href={document.url} target="_blank">{document.url}</a></p>          <p className="card-text">Publication date: {document.publicationDate}</p>
+          <p className="card-text">{description}</p>
+          <p className="card-text">Subjects: {subjects.join(', ')}</p>
+          
         </div>
       );
     }

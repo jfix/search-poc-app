@@ -18,8 +18,8 @@ export default function Home() {
   return (
     <main className="main main--home">
       <div className="row home-search">
-        <img className="logo" src="/images/cognitive-search.png" alt="Cognitive Search"></img>
-        <p className="poweredby lead">Powered by Azure Cognitive Search</p>
+        <img className="logo" src="/images/oecd-logo-colour.svg" alt="Cognitive Search"></img>
+        <p className="poweredby lead">Proof of Concept using Azure Cognitive Search</p>
         <SearchBar postSearchHandler={navigateToSearchPage}></SearchBar>
       </div>
     </main>
