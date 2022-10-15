@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=17.9.0"
+    "node": ">=17.6.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
