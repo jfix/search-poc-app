@@ -1,9 +1,9 @@
 {
-  "name": "sample",
-  "version": "0.1.0",
+  "name": "search-poc-app",
+  "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=16.8.0"
+    "node": ">=17.9.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

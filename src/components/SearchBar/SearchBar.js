@@ -43,7 +43,7 @@ export default function SearchBar(props) {
             const body = {
                 q: q,
                 top: 5,
-                suggester: 'publications-suggester'
+                suggester: 'sg'
             };
 
             if (q === '') {
