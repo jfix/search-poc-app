@@ -4,12 +4,13 @@
 }
 
 .navbar-logo {
-    width: 4em;
+    width: 6em;
     height: auto;
+    padding-left: 1em;
 }
 
-.nav-link { color: #fff; }
-.nav-link:hover { color: #eee; }
+.nav-link { color: #fff !important; }
+.nav-link:hover { color: #eee !important; }
 
 .auth-link { color: #fff; }
 .auth-link:hover { color: #eee; }

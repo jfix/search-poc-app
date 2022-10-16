@@ -1,16 +1,47 @@
 import React from 'react';
 
 import './Result.css';
+import dayjs from 'dayjs';
 
 export default function Result(props) {
+    var description = props.document.description_en || props.document.description_fr;
+    description = description ? description.replace(/(<([^>]+)>)/ig, '') : ''
+    var language = props.document.languages[0];
+    language = (language === 'en') ? 'English' : 'French'
+    var size = props.document.size;
+    size = (size === '1 pages') ? 'One page' : size;
+
+    console.log(description)
     return(
-    <div className="card result">
-        <a href={`/details/${props.document.id}`}>
-            <img className="card-img-top" src={props.document.thumbnail} alt={props.document.title}></img>
-            <div className="card-body">
-                <span className="title-style">{props.document.title}</span>
+        <div className="card p-0 result mb-12" style={{"width": "100%", "min-width": "100%"}}>
+            <div className="row">
+                <div className="col-md-2">
+                    <a href={`/details/${props.document.id}`} title="Click for details">
+                        <img src={props.document.image_url} alt={props.document.title_en} className="result-img img-fluid rounded-start"></img>
+                    </a>
+                </div>
+                <div className="col-md-10">
+                <div className="card-body">
+                    <h5 className="card-title">{props.document.title_en || props.document.title_fr}</h5>
+                    <p className="text-truncate card-text">{description}</p>
+                    <p className="card-text"><a href={props.document.url}>{props.document.url}</a></p>
+                    <div className='row'>
+                        <div className='col-md-2'>
+                            <p className="card-text"><small className="text-capitalize text-muted">{props.document.type}</small></p>
+                        </div>
+                        <div className='col-md-2'>
+                            <p className="card-text"><small className="text-muted">{dayjs(props.document.date).format('D MMM YYYY')}</small></p>
+                        </div>
+                        <div className='col-md-2'>
+                            <p className="card-text"><small className="text-muted">{language}</small></p>
+                        </div>
+                        <div className='col-md-2'>
+                            <p className="card-text"><small className="text-muted">{size}</small></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
-        </a>
-    </div>
+        </div>
     );
 }
