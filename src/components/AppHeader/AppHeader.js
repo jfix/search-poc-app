@@ -17,12 +17,13 @@ export default function AppHeader() {
             <li className="nav-item">
               <a className="nav-link" href="/Search">Search</a>
             </li>
+          </ul>
+          <ul className="navbar-nav justify-content-end">
             <li className="nav-item">
-              <a className="nav-link" href="https://github.com/oecd/search-poc/">Project homepage</a>
+              <a className="nav-link active" href="/About">About</a>
             </li>
           </ul>
         </div>
-
       </nav>
       
     </header>
