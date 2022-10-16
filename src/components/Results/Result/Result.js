@@ -10,14 +10,14 @@ export default function Result(props) {
     language = (language === 'en') ? 'English' : 'French'
     var size = props.document.size;
     size = (size === '1 pages') ? 'One page' : size;
-
-    console.log(description)
+    var imageUrl = props.document.image_url.replace('https:https://', 'https://')
+    imageUrl = (imageUrl === 'https:') ? `https://via.placeholder.com/340x460?text=${props.document.type}` : imageUrl
     return(
-        <div className="card p-0 result mb-12" style={{"width": "100%", "min-width": "100%"}}>
+        <div className="card p-0 result mb-12" style={{"width": "100%", "minWidth": "100%"}}>
             <div className="row">
                 <div className="col-md-2">
                     <a href={`/details/${props.document.id}`} title="Click for details">
-                        <img src={props.document.image_url} alt={props.document.title_en} className="result-img img-fluid rounded-start"></img>
+                        <img src={imageUrl} alt={props.document.title_en} className="result-img img-fluid rounded-start"></img>
                     </a>
                 </div>
                 <div className="col-md-10">
