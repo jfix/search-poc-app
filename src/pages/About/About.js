@@ -27,6 +27,16 @@ export default function About() {
               <li>It should be fast</li>
             </ul>
             
+            <h2>Use cases</h2>
+
+            <p>The following is an incomplete list of potential use cases for a search engine (more to be added). The intention is not for the Proof of concept to satisfy these use cases, but to give an indication whether a production-ready search engine might be able to.</p>
+            <ul>
+              <li>I want to provide a search engine for OECD.org which will return hits to all possible resources. This means having an overall search interface that will surface documents not necessarily available on OECD.org itself, but on other platforms, like iLibrary or the Legal instruments database, or the official documents subsite, the events site, ...</li>
+              <li>I want to provide specialist search engines for specific objects. For example, while the overall search engine will be quite generic (see the currently indexed fields below), one may want to have a search engine specifically for publications which will allow facetting by embargo dates, or other "esoteric" fields. The same applies for official documents (for example they have Directorate information that will not be useful or interesting for the normal visitor of OECD.org).</li>
+              <li>As a web editor of a Directorate, when working on a page in the AEM CMS, once I have published it on OECD.org, I want it to be found via the search engine in the minute after its publication.</li>
+              <li>When the Economic Outlook (or other high-profile or not publications) are published, the search engine should be able to surface this as soon as the publication has been published.</li>
+            </ul>
+
             <h2>The moving parts</h2>
 
             <p>Several parts are necessary to build a search engine using Azure Cognitive Search</p>
@@ -104,7 +114,7 @@ export default function About() {
             <h2>Limitations</h2>
             <p>As this is only a proof of concept, not everything has been implemented, for example:</p>
             <ul>
-              <li>Only English and French are currently accepted (but should be really have others?)</li>
+              <li>Only English and French are currently accepted (but should we really have others, beyond the two official languages?)</li>
               <li>Official documents don't have subjects and seldom descriptions; Publications don't have countries</li>
               <li>Ordering of results is (apparently) ordering by adding to the index</li>
               <li>Only simple checkbox facets have been used, for dates a slider facet would be more appropriate and feasible</li>
