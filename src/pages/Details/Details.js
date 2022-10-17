@@ -58,7 +58,7 @@ export default function Details() {
     else {
       rawStyle += " active";
       detailsBody = (
-        <div className="card-body text-left">
+        <div className="card-body text-start">
           <pre><code>
             {JSON.stringify(document, null, 2)}
           </code></pre>
@@ -72,8 +72,8 @@ export default function Details() {
       <div className="card text-center result-container">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
-              <li className="nav-item"><button className={resultStyle} onClick={() => setTab(0)}>Result</button></li>
               <li className="nav-item"><button className={rawStyle} onClick={() => setTab(1)}>Raw Data</button></li>
+              {/* <li className="nav-item"><button className={resultStyle} onClick={() => setTab(0)}>Result</button></li> */}
           </ul>
         </div>
         {detailsBody}
