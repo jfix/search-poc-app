@@ -31,7 +31,6 @@ export default function Details() {
 
   // View default is loading with no active tab
   let detailsBody = (<CircularProgress />),
-      resultStyle = "nav-link",
       rawStyle    = "nav-link";
 
   if (!isLoading && document) {
@@ -39,7 +38,6 @@ export default function Details() {
     if (selectedTab === 0) {
       const description = document.description?.en
       const subjects = document.subjects_en
-      resultStyle += " active";
       detailsBody = (
         <div className="card-body">
           <h5 className="card-title">{document.title}</h5>
