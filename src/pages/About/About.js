@@ -24,7 +24,7 @@ export default function About() {
               <li>Index all sorts of documents (different websites, different types of documents, ...)</li>
               <li>Show indexation is immediate for single or few documents</li>
               <li>Prove we can have the usual expected features for search, such as Autosuggest, Facets and the like</li>
-              <li></li>
+              <li>It should be fast</li>
             </ul>
             
             <h2>The moving parts</h2>
@@ -39,6 +39,13 @@ export default function About() {
             </ul>
             
             <h3>JSON documents</h3>
+
+            <p>At this point, two sources have been integrated in the search engine:</p>
+            <ol>
+              <li>Publications; 31219 documents (via the Discovery Service, similar to iLibrary) - this represents most publications available on iLibrary, such as articles, books, workinpapers, podcasts, indicators, datasets, and summaries</li>
+              <li>Official documents; 51199 documents (via an XML dump provided by DKI) - this covers official documents (without specification), agendas, and minutes of meetings, all are obviously unclassified</li>
+            </ol>
+
             <p>For the purpose of this exercise, the following JSON schema has been put in place. The common fields are:</p>
             <ul>
               <li><strong>Domain</strong>, which indicates the provenance (think: "Publication", "Official document", "Legal instrument", "Event", ...)</li>
@@ -98,6 +105,7 @@ export default function About() {
             <p>As this is only a proof of concept, not everything has been implemented, for example:</p>
             <ul>
               <li>Only English and French are currently accepted (but should be really have others?)</li>
+              <li>Official documents don't have subjects and seldom descriptions; Publications don't have countries</li>
               <li>Ordering of results is (apparently) ordering by adding to the index</li>
               <li>Only simple checkbox facets have been used, for dates a slider facet would be more appropriate and feasible</li>
               <li>The look and feel of the page is purposefully not similar to the final design (which final design?)</li>
