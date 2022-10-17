@@ -65,6 +65,7 @@ export default function About() {
               <li><strong>URL</strong>, this is another obligatory item because without an URL what use is the search result?</li>
               <li><strong>Language</strong>, can be more than one, only English and French are currently accepted within the context of the PoC</li>
               <li><strong>Description</strong>, again can be English or French. This gives some more meat to the index, otherwise the search index would only be able to search inside the titles for a user-submitted query.</li>
+              <li><strong>Subjects</strong>, they are the equivalent of "topics" or "themes". They may exist in English and/or French. Publication have both, Official documents have none.</li>
               <li><strong>Size</strong>, this field encompasses the quantity of an item, such as the number of pages of a publication or an Official document, or the length, in minutes, of a Podcast.</li>
               <li><strong>Image URL</strong> is a link to an image that can be displayed next to the search result. This makes sense for publications where we have usually a cover, but may not work for Official documents.</li>
             </ul>
@@ -111,6 +112,18 @@ export default function About() {
               }
               )}
 
+            <h3>The index</h3>
+
+            <p>This is the database that stores the JSON documents in a very efficient format (I assume that Lucene is the underlying search engine as the documentation refers to its syntax repeatedly. Also, it's open-source, so no cost to Microsoft.</p>
+            
+            <p>Documents can be sent to the index via a REST API (in batches), or can be picked up from a data storage location, via an indexer. The format for both approaches are slightly different. An indexer is useful to reindex everything again while the REST API is useful to index one or more document quasi-instantaneous.</p>
+
+            <p>The design of an index needs to be well-thought out before its use because changing a field (such as renaming it or changing its type) will mean to reindex all documents.</p>
+
+            <p>We currently store 82.418 documents (publications and official documents) in the index. The used storage size for these documents is 126.21 MB. They are stored in an Azure blob storage location, so reindexing is quite easy. Indexing 31219 documents (the publications) took on average between 10 and 12 minutes. Indexing the 51199 JSON documents representing the Official documents took on the last run almost 15 minutes.</p>
+
+            <p>It is possible to build and maintain several indexes (which would make the use case about different search scenarios possible). One can also use the concept of an 'alias' to switch out indexes unbeknownst to the users or the applications. This is perfect to replace an older index with fewer fields with a newer one that contains more fields.</p>
+
             <h2>Limitations</h2>
             <p>As this is only a proof of concept, not everything has been implemented, for example:</p>
             <ul>
@@ -119,6 +132,16 @@ export default function About() {
               <li>Ordering of results is (apparently) ordering by adding to the index</li>
               <li>Only simple checkbox facets have been used, for dates a slider facet would be more appropriate and feasible</li>
               <li>The look and feel of the page is purposefully not similar to the final design (which final design?)</li>
+            </ul>
+
+            <h2>To-do list</h2>
+
+            <p>The following is an incomplete list of tasks that remain to do in order to prove that this is the right approach (these are suggestions only):</p>
+            <ul>
+              <li>(Back office) Add the T4 web pages?</li>
+              <li>(Back office) Add Legal instruments?</li>
+              <li>(User interface) Add a date slider facet?</li>
+              <li>(User interface) Add ordering of documents (by date or alphabetically by title)?</li>
             </ul>
 
             <h2>Further reading</h2>
