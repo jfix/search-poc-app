@@ -143,11 +143,12 @@ export default function About() {
             <h2>Limitations</h2>
             <p>As this is only a proof of concept, not everything has been implemented, for example:</p>
             <ul>
-              <li>Only English and French are currently accepted (but should we really have others, beyond the two official languages?)</li>
-              <li>Official documents don't have subjects and seldom descriptions; Publications don't have countries</li>
-              <li>Web pages can have several document types ('doc_category'), for the purpose of this PoC only the first category found will be used. The same is true for URLs.</li>
-              <li>Ordering of results is (apparently) ordering by adding to the index</li>
-              <li>Only simple checkbox facets have been used, for dates a slider facet would be more appropriate and feasible</li>
+              <li>Only English and French are currently accepted (but should we really have others, beyond the two official languages?). Note that Azure Cognitive Search supports many more languages, including non-latin alphabets.</li>
+              <li>Note that Official documents don't have subjects and seldom descriptions; Publications don't have countries. This affects the use of facets, of course.</li>
+              <li>Web pages can have several document types ('doc_category'), for the purpose of this PoC only the first category found will be used. The same is true for URLs. In a production environment, we can design the index to allow for several categories (similar to the several subjects possible right now).</li>
+              <li>Ordering of results is currently hard-coded to be "latest date first".  The user interface should be updated to allow both directions as well as alphabetical sorting of titles.</li>
+              <li>Only simple checkbox facets have been used for now, for dates a slider facet would be more appropriate and feasible</li>
+              <li>Facets will display a subset of available facets; this is configurable but may impact usability (think many dozens of facets, ... UI issue to be considered).</li>
               <li>The look and feel of the page is purposefully not similar to the final design (which final design?)</li>
             </ul>
 
@@ -158,7 +159,7 @@ export default function About() {
               <li>DONE - (Back office) Add the T4 web pages?</li>
               <li>(Back office) Add Legal instruments?</li>
               <li>(User interface) Add a date slider facet?</li>
-              <li>(User interface) Add ordering of documents (by date or alphabetically by title)?</li>
+              <li>(User interface) Allow ordering of documents (by date or alphabetically by title) - currently hard-coded by latest date first</li>
               <li>(Infrastructure) Use service bus to push into the index and blob storage?</li>
             </ul>
 
