@@ -30,9 +30,10 @@ export default function Search() {
   useEffect(() => {
     setIsLoading(true);
     const body = {
-      q: q,
-      top: top,
-      skip: skip,
+      q,
+      top,
+      skip,
+      orderBy: ["date desc"],
       filters: filters
     };
 

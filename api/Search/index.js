@@ -50,7 +50,7 @@ const readFacets = (facetString) => {
 
 module.exports = async function (context, req) {
 
-    //context.log(req);
+    // context.log(req);
 
     try {
         // Reading inputs from HTTP Request
@@ -59,7 +59,7 @@ module.exports = async function (context, req) {
         const skip = (req.query.skip || (req.body && req.body.skip));
         const filters = (req.query.filters || (req.body && req.body.filters));
         const facets = readFacets(process.env["SearchFacets"]);
-        
+        const orderBy = (req.query.orderBy || (req.body && req.body.orderBy ));
 
         // If search term is empty, search everything
         if (!q || q === "") {
@@ -68,12 +68,14 @@ module.exports = async function (context, req) {
 
         // Creating SearchOptions for query
         let searchOptions = {
-            top: top,
-            skip: skip,
+            top,
+            skip,
             includeTotalCount: true,
+            orderBy,
             facets: Object.keys(facets),
             filter: createFilterExpression(filters, facets)
         };
+        // console.log(`SEARCH OPTIONS: ${JSON.stringify(searchOptions, null, 2)}`)
 
         // Sending the search request
         const searchResults = await client.search(q, searchOptions);
