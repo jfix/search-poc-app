@@ -159,6 +159,7 @@ export default function About() {
               <li>(Back office) Add Legal instruments?</li>
               <li>(User interface) Add a date slider facet?</li>
               <li>(User interface) Add ordering of documents (by date or alphabetically by title)?</li>
+              <li>(Infrastructure) Use service bus to push into the index and blob storage?</li>
             </ul>
 
             <h2>Further reading</h2>
