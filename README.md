@@ -2,10 +2,6 @@
 
 This sample is a React template for [Azure Cognitive Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search). It leverages the [Azure SDK for Javascript/Typescript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/) and [Azure Static Web Apps](https://aka.ms/swadocs) to make it easy to get up and running with a simple web application.
 
-You can view the resulting web application here: [https://victorious-beach-0ab88b51e.azurestaticapps.net/](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
-
-![Screenshot of sample web app](./images/web-app.png)
-
 You can easily deploy the sample onto Azure or run it locally by following the steps below.
 
 ## Running the application locally
@@ -36,9 +32,9 @@ For this sample, there is a search index using the [goodbooks-10k dataset](https
   "Values": {
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "node",
-    "SearchApiKey": "03097125077C18172260E41153975439",
-    "SearchServiceName": "azs-playground",
-    "SearchIndexName": "good-books",
+    "SearchApiKey": "xxxxxxx",
+    "SearchServiceName": "yyyyyyy",
+    "SearchIndexName": "zzzzzzz",
     "SearchFacets": "authors*,language_code"
   }
 }
