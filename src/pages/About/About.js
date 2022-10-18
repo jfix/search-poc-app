@@ -32,7 +32,7 @@ export default function About() {
             <p>The following is an incomplete list of potential use cases for a search engine (more to be added). The intention is not for the Proof of concept to satisfy these use cases, but to give an indication whether a production-ready search engine might be able to.</p>
             <ul>
               <li>I want to provide a search engine for OECD.org which will return hits to all possible resources. This means having an overall search interface that will surface documents not necessarily available on OECD.org itself, but on other platforms, like iLibrary or the Legal instruments database, or the official documents subsite, the events site, ...</li>
-              <li>I want to provide specialist search engines for specific objects. For example, while the overall search engine will be quite generic (see the currently indexed fields below), one may want to have a search engine specifically for publications which will allow facetting by embargo dates, or other "esoteric" fields. The same applies for official documents (for example they have Directorate information that will not be useful or interesting for the normal visitor of OECD.org).</li>
+              <li>I want to provide specialist search engines for specific objects. For example, while the overall search engine will be quite generic (see the currently indexed fields below), one may want to have a search engine specifically for publications which will allow facetting by embargo dates, DOIs, ISBNs, ISSNs, or other "esoteric" fields. The same applies for official documents (for example they have Directorate information that will not be useful or interesting for the normal visitor of OECD.org).</li>
               <li>As a web editor of a Directorate, when working on a page in the AEM CMS, once I have published it on OECD.org, I want it to be found via the search engine in the minute after its publication.</li>
               <li>When the Economic Outlook (or other high-profile or not publications) are published, the search engine should be able to surface this as soon as the publication has been published.</li>
             </ul>
@@ -45,15 +45,16 @@ export default function About() {
               <li><strong>Data storage</strong>, where the JSON documents are to be stored. This is a Azure blob storage area that needs to be set up and configured</li>
               <li><strong>An index</strong> which will hold the JSON documents in an efficient format that allows for quick access. It's a bit like the database of the search engine.</li>
               <li><strong>An indexer</strong> is the connector between the data storage and the index. It will read the documents once or regularly, on a schedule or when triggered, and add them to the index. If they already exist, they are updated, otherwise they are added.</li>
-              <li>A <strong>user interface</strong>, or several, is needed to actually use the index and return results.</li>
+              <li>A <strong>user interface</strong>, or several, for different purposes, is needed to actually use the index and return results.</li>
             </ul>
             
             <h3>JSON documents</h3>
 
-            <p>At this point, two sources have been integrated in the search engine:</p>
+            <p>At this point, three sources have been integrated in the search engine:</p>
             <ol>
-              <li>Publications; 31219 documents (via the Discovery Service, similar to iLibrary) - this represents most publications available on iLibrary, such as articles, books, workinpapers, podcasts, indicators, datasets, and summaries</li>
-              <li>Official documents; 51199 documents (via an XML dump provided by DKI) - this covers official documents (without specification), agendas, and minutes of meetings, all are obviously unclassified</li>
+              <li><strong>Publications</strong>; 31219 documents (via the Discovery Service, similar to iLibrary) - this represents most publications available on iLibrary, such as articles, books, workinpapers, podcasts, indicators, datasets, and summaries</li>
+              <li><strong>Official documents</strong>; 51199 documents (via an XML dump provided by DKI) - this covers official documents (without specification), agendas, and minutes of meetings, all are obviously unclassified</li>
+              <li><strong>Web pages</strong>; 45583 documents (via an XML dump provided by Romuald, based on the table of T4 pages) - this represents a large number of unique web pages from the OECD.org site, with its own classification scheme (news releases, reports, speeches/presentations, articles, cvs, ...)</li>
             </ol>
 
             <p>For the purpose of this exercise, the following JSON schema has been put in place. The common fields are:</p>
@@ -112,6 +113,21 @@ export default function About() {
               }
               )}
 
+            <p>JSON document for a web page:</p>
+              {PrettyPrintJson({
+                "id": "58255-569",
+                "domain": "web page",
+                "type": "report",
+                "title_en": "Regulatory Policy: Mexico",
+                "date": "2021-10-27T00:00:00Z",
+                "url": "https://oecd.org/gov/regulatory-policy/regulatory-policy-mexico.htm",
+                "languages": ["en"],
+                "description_en": "Access all events and reports on regulatory policy and governance in Mexico.",
+                "subjects_en": [],
+                "image_url": "https://picsum.photos/340/460"
+              }
+              )}
+
             <h3>The index</h3>
 
             <p>This is the database that stores the JSON documents in a very efficient format (I assume that Lucene is the underlying search engine as the documentation refers to its syntax repeatedly. Also, it's open-source, so no cost to Microsoft.</p>
@@ -129,6 +145,7 @@ export default function About() {
             <ul>
               <li>Only English and French are currently accepted (but should we really have others, beyond the two official languages?)</li>
               <li>Official documents don't have subjects and seldom descriptions; Publications don't have countries</li>
+              <li>Web pages can have several document types ('doc_category'), for the purpose of this PoC only the first category found will be used. The same is true for URLs.</li>
               <li>Ordering of results is (apparently) ordering by adding to the index</li>
               <li>Only simple checkbox facets have been used, for dates a slider facet would be more appropriate and feasible</li>
               <li>The look and feel of the page is purposefully not similar to the final design (which final design?)</li>
@@ -138,7 +155,7 @@ export default function About() {
 
             <p>The following is an incomplete list of tasks that remain to do in order to prove that this is the right approach (these are suggestions only):</p>
             <ul>
-              <li>(Back office) Add the T4 web pages?</li>
+              <li>DONE - (Back office) Add the T4 web pages?</li>
               <li>(Back office) Add Legal instruments?</li>
               <li>(User interface) Add a date slider facet?</li>
               <li>(User interface) Add ordering of documents (by date or alphabetically by title)?</li>
